@@ -1,16 +1,18 @@
 Pick your favorite your frameworks and stack packages to abstract your ORM all the way to your SPA. Use this one convention to mix and match front-ends and back-ends however you need.  
 
 ## What will this even do? 
-Each back-end package will do two things: 
+Allow you to access your data models and properties directly in your Single-Page Application, including relationships and complex custom types; then automatically get that data as-needed with no further effort.
+
+### Each back-end package will: 
 1 provide standardized JS classes describing each model from your choosen ORM, such as field names, types, nullability, constraints, and relationships to other models.
 2 provide standardized controller actions for basic data interaction, setting up a convention-based API from your ORM models. 
 
-Each front-end package will do :
-1. Understand the provided JS model classes to automatically interact with the API(s) as-needed. Records are accessed through proxy, so there's never a reason to write your own fetch call. Access your data properties directly and let stackage worry about how that data gets to your cursor. 
+### Each front-end package will:
+1. Understand the provided JS model classes to automatically interact with the API(s) as-needed. Records are accessed through proxy, so there's never a reason to write your own fetch call.  
 2. Manage front-end data caching. Don't ask for data you've already gotten, unless you want to.
 3. Provide optional hooks for receiving live data pushes.
 
-Planned front-ends: 
+### Planned front-ends: 
 - stackage-js - vanilla JS holding the majority of front-end functionality
 - stackage-ts - same thing but with TS. Might not do this. Convince me.
 - stackage-handlebars - might just be the vanilla version?
@@ -18,7 +20,7 @@ Planned front-ends:
 - stackage-angular - wrap stackage-js to build directly into Angular.
 - stackage-react - wrap stackage-js to build directly into React.
 
-Planned back-ends: 
+### Planned back-ends: 
 - stackage-sequelize - Sequelize
 - stackage-ef - Entity Framework
 - Any other ORMs I come across, preferably in a variety of languages as a flex
