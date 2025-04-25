@@ -6,7 +6,7 @@ Each back-end package will do two things:
 2 provide standardized controller actions for basic data interaction, setting up a convention-based API from your ORM models. 
 
 Each front-end package will do :
-1. Understand the provided JS model classes to automatically interact with the API(s) as-needed. Records are accessed through proxy, so there's never a reason to write your own fetch call. Access your data properties directly. 
+1. Understand the provided JS model classes to automatically interact with the API(s) as-needed. Records are accessed through proxy, so there's never a reason to write your own fetch call. Access your data properties directly and let stackage worry about how that data gets to your cursor. 
 2. Manage front-end data caching. Don't ask for data you've already gotten, unless you want to.
 3. Provide optional hooks for receiving live data pushes.
 
