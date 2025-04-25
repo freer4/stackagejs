@@ -1,3 +1,9 @@
+Pick your favorite your frameworks and stack packages to abstract your ORM all the way to your HTML. Use this one convention to mix and match front-ends and back-ends however you need.  
+
+Planned front-ends: 
+# stackage-js, vanilla JS and TS holding the majority of functionality
+
+
 API definitions
 The minimum endpoints for default interactions. Created for each model on the back end, consumed by the front end. 
 
