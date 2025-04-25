@@ -1,7 +1,25 @@
 Pick your favorite your frameworks and stack packages to abstract your ORM all the way to your HTML. Use this one convention to mix and match front-ends and back-ends however you need.  
 
+## What will this even do? 
+Each back-end package will do two things: 
+1 provide standardized JS classes describing each model from your choosen ORM, such as field names, types, nullability, constraints, and relationships to other models
+2 provide standardized controller actions for basic data interaction, setting up a convention-based API from your ORM models. 
+
+Each front-end package will do :
+1. Understand the provided JS model classes to automatically interact with the API(s) as-needed
+2. Manage  
+
 Planned front-ends: 
-# stackage-js, vanilla JS and TS holding the majority of functionality
+- stackage-js - vanilla JS and TS holding the majority of functionality
+- stackage-handlebars - might just be the vanilla version?
+- stackage-vue - wrap stackage-js to build directly into Vue reactivity
+- stackage-angular - wrap stackage-js to build directly into Angular
+- stackage-react - wrap stackage-js to build directly into React
+
+Planned back-ends: 
+- stackage-sequelize - Sequelize
+- stackage-ef - Entity Framework
+
 
 
 API definitions
