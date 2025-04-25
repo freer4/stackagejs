@@ -13,12 +13,13 @@ Allow you to access your data models and properties directly in your Single-Page
 3. Provide optional hooks for receiving live data pushes.
 
 ### Planned front-ends: 
-- stackage-js - vanilla JS holding the majority of front-end functionality
+- stackage-js - vanilla JS holding the majority of front-end functionality for specific SPAs to wrap
 - stackage-ts - same thing but with TS. Might not do this. Convince me.
 - stackage-handlebars - might just be the vanilla version?
-- stackage-vue - wrap stackage-js to build directly into Vue reactivity.
-- stackage-angular - wrap stackage-js to build directly into Angular.
-- stackage-react - wrap stackage-js to build directly into React.
+- stackage-vue
+- stackage-angular
+- stackage-react
+- stackage-svelte
 
 ### Planned back-ends: 
 - stackage-sequelize - Sequelize
@@ -40,11 +41,16 @@ Prefix option for multi-system setups
 
 ## Front-End definition
 
+Data access works like so: 
+
 `Central` is a simple object acting as a faux-database to keep fetched data cached. Utilizing proxies, attempting to access a `Container` for the first time will create that container on the `Central` object. 
 ↓
-`Container` is also a simple object, here akin to a database model. It utilizes proxies to create empty `Records` as they are asked for or discovered.   
+`Container` is also a simple object, here akin to a database model, accessed from the `Central` object like so: `Central[MyModel.name]`. It utilizes proxies to create empty `Records` as they are asked for or discovered. 
 ↓
 `Record` is an instance of a given Model class, as they are defined from your ORM's stackage. The first time a record is accessed directly, it will ask its corresponding API for the available data. There are utilities to pre-fetch at will, and re-fetch at will or with an expiration setting. 
+↔ `Record` access related records from another record and stackage will understand what you're looking for based on the Model definitions
+
+
 
 
 
