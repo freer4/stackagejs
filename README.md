@@ -42,7 +42,7 @@ Prefix option for multi-system setups
 ## Front-End definition
 
 Data access works like so: 
-
+```
 `Central` is a simple object acting as a faux-database to keep fetched data cached. Utilizing proxies, attempting to access a `Container` for the first time will create that container on the `Central` object. 
 
 ↓
@@ -52,8 +52,10 @@ Data access works like so:
 ↓
 
 `Record` is an instance of a given Model class, as they are defined from your ORM's stackage. The first time a record is accessed directly, it will ask its corresponding API for the available data. There are utilities to pre-fetch at will, and re-fetch at will or with an expiration setting. 
+```
 
-↔ `Record` access related records from another record and stackage will understand what you're looking for based on the Model definitions
+
+Access related records from another record and stackage will understand what you're looking for based on the Model definitions
 
 
 
