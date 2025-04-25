@@ -8,7 +8,7 @@ Each back-end package will do two things:
 Each front-end package will do :
 1. Understand the provided JS model classes to automatically interact with the API(s) as-needed. Records are accessed through proxy, so there's never a reason to write your own fetch call. Access your data properties directly. 
 2. Manage front-end data caching. Don't ask for data you've already gotten, unless you want to.
-3. Optional hooks for receiving live data pushes.
+3. Provide optional hooks for receiving live data pushes.
 
 Planned front-ends: 
 - stackage-js - vanilla JS holding the majority of front-end functionality
@@ -22,6 +22,9 @@ Planned back-ends:
 - stackage-sequelize - Sequelize
 - stackage-ef - Entity Framework
 - Any other ORMs I come across, preferably in a variety of languages as a flex
+
+Other stackages: 
+- Might be opportunities for invidivualized plugins based on utilities like microservices, think "PubSub". 
 
 
 API definitions
