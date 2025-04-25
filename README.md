@@ -41,29 +41,16 @@ Prefix option for multi-system setups
 
 ## Front-End definition
 
-Data access works like so: 
 `Central` is a simple object acting as a faux-database to keep fetched data cached. Utilizing proxies, attempting to access a `Container` for the first time will create that container on the `Central` object. 
 
 `Container` is also a simple object, here akin to a database model, accessed from the `Central` object like so: `Central[MyModel.name]`. It utilizes proxies to create empty `Records` as they are asked for or discovered. 
 
-`Record` is an instance of a given Model class, as they are defined from your ORM's stackage. The first time a record is accessed directly, it will ask its corresponding API for the available data. There are utilities to pre-fetch at will, and re-fetch at will or with an expiration setting. 
+`Record` is an instance of a given Model class, as they are defined from your ORM's stackage. Access a record like so: `Central[MyModel.name][PK]`. The first time a record is accessed directly, it will ask its corresponding API for the available data. There are utilities to pre-fetch at will, and re-fetch at will or with an expiration setting. 
 
 
 Access related records from another record and stackage will understand what you're looking for based on the Model definitions
 
-
-
-
-
-Models are classes provided by the back end. 
-
-Container objects contain instances of known Model objects (“Records”) keyed by PKs (“id”). They are also proxies, intercepting access to Records. 
-
 Empty Records are created anytime a PK is discovered for the Container. This could be as an FK from another Container or directly asked for from API.
-
-If Record is accessed and PK does not exist, an empty Record of that Model is also created. 
-
-Empty records are marked with a false _loaded property. 
 
 Accessing Empty records triggers a Read call to the API. Successful retrieval updates _loaded property to true and _fetched property to current time.
 
@@ -100,6 +87,11 @@ Newly created Records are extended with non-enumerable methods and properties.
 
 
 #### Container Local methods:
+- `_remove([Record] || Record || [PK] || PK)` removes the passed Record(s) from this Container by reference or PK, and does not call API
+- `_validate()` calls each _validations function from the Container on this record
+- `_addError()` adds an error to the _errors property
+- `_removeError()` removes an error from the _errors property
+- `_clearErrors()` removes an error from the _errors property
 
 
 
