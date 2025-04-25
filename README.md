@@ -35,11 +35,20 @@ The minimum endpoints for default interactions. Created for each model on the ba
 ## Model definitions
 The model format created by the back end for any given front end to consume.
 
+Prefix option for multi-system setups
+
 
 ## Front-End definition
-Models are classes provided by the back end. 
 
-“Central” object containing references to individual “Container” objects keyed by Model name.
+`Central` is a simple object acting as a faux-database to keep fetched data cached. Utilizing proxies, attempting to access a `Container` for the first time will create that container on the `Central` object. 
+↓
+`Container` is also a simple object, here akin to a database model. It utilizes proxies to create empty `Records` as they are asked for or discovered.   
+↓
+`Record` is an instance of a given Model class, as they are defined from your ORM's stackage. The first time a record is accessed directly, it will ask its corresponding API for the available data. There are utilities to pre-fetch at will, and re-fetch at will or with an expiration setting. 
+
+
+
+Models are classes provided by the back end. 
 
 Container objects contain instances of known Model objects (“Records”) keyed by PKs (“id”). They are also proxies, intercepting access to Records. 
 
@@ -55,6 +64,7 @@ If Container has a set expiration duration, the proxy remains and expiration is 
 
 Newly created Records are extended with non-enumerable methods and properties. 
 
+### Record Class
 
 #### Record properties:
 - `_loaded` read-only reference to book value indicating if record is considered loaded.
@@ -73,8 +83,14 @@ Newly created Records are extended with non-enumerable methods and properties.
 - `_save()` calls Update API if PK is present. Calls Create API if PK is not present. Successful Create updates Record with returned PK. Returns a promise.
 - `_delete()` calls Delete API. Upon Successful Delete, _remove is called on the Record. Returns a promise. 
 
+
+### Container Class
+
 #### Container properties: 
 - `_array` read-only reference to const array of known records for this Container.
+
+
+
 
 #### Container Local methods:
 
@@ -115,4 +131,6 @@ subset - an array of PKs in the current Container for records to restrict this f
 
 _subset(pks) - sets the subset property on the given 
 
+
+### Central Class
 
