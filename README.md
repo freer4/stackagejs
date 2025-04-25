@@ -4,8 +4,8 @@ Pick your favorite your frameworks and stack packages to abstract your ORM all t
 Allow you to access your data models and properties directly in your Single-Page Application, including relationships and complex custom types; then automatically get that data as-needed with no further effort.
 
 ### Each back-end package will: 
-1 provide standardized JS classes describing each model from your choosen ORM, such as field names, types, nullability, constraints, and relationships to other models.
-2 provide standardized controller actions for basic data interaction, setting up a convention-based API from your ORM models. 
+1. provide standardized JS classes describing each model from your choosen ORM, such as field names, types, nullability, constraints, and relationships to other models.
+2. provide standardized controller actions for basic data interaction, setting up a convention-based API from your ORM models. 
 
 ### Each front-end package will:
 1. Understand the provided JS model classes to automatically interact with the API(s) as-needed. Records are accessed through proxy, so there's never a reason to write your own fetch call.  
