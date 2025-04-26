@@ -1,4 +1,4 @@
-Pick your favorite your frameworks and stack packages to abstract your ORM all the way to your SPA. Use this one convention to mix and match front-ends and back-ends however you need.  
+Pick your favorite frameworks and stack packages to abstract your ORM all the way to your SPA. Use this one convention to mix and match front-ends and back-ends however you need.  
 
 ## What does this even do? 
 Allow you to access your data models and properties directly in your Single-Page Application, including relationships and complex custom types; then automatically get that data as-needed with no further effort.
@@ -32,6 +32,12 @@ Allow you to access your data models and properties directly in your Single-Page
 
 ## API definitions
 The minimum endpoints for default interactions. Created for each model on the back end, consumed by the front end. 
+
+
+- [POST] /{ModelName}/Save - Takes json output from the Model object on the front-end and creates or (updates, if PK provided) it in the database. Returns an OperationStatus object carrying the final model object, including the generated PK if this was a create. 
+- [POST] /{ModelName}/Delete - Takes the PK of a record to delete, return OperationStatus object
+- [GET] /{Model}/{PK} - Returns the record from the corresponding PK
+- /{Model/
 
 ## Model definitions
 The model format created by the back end for any given front end to consume.
