@@ -94,17 +94,14 @@ Newly created Records are extended with non-enumerable methods and properties.
 
 #### Container Local methods:
 - `_remove([Record] || Record || [PK] || PK)` removes the passed Record(s) from this Container by reference or PK, and does not call API
-- `_validate()` calls each _validations function from the Container on this record
-- `_addError()` adds an error to the _errors property
-- `_removeError()` removes an error from the _errors property
-- `_clearErrors()` removes an error from the _errors property
 
 
 
 #### Container API methods:
 
 
-Filtration set (Optional) 
+#### Filtration set (Optional) 
+
 Server-side data filtering that returns an array of PKs for the given queries on this container. Devs should be conscious of whether their data set is better filtered on the back-end (no need to send all records to client to filter) or the front-end (more data initially, but fewer network calls and less stress on the back-end). 
 
 As these can be finicky to outright grueling to implement in an abstracted, efficient manner, at this time Filtration methods will be considered optional. 
@@ -112,30 +109,27 @@ As these can be finicky to outright grueling to implement in an abstracted, effi
 TODO define a standard not-implemented response for the API
 
 These properties exist on the Container:
-_equals(prop, spec) sets up an equals query for Filter API consumption. Returns a FilterQuery object. 
-_contains(prop, spec) sets up a contains query for Filter API consumption. Returns a FilterQuery object. 
-_startsWith(prop, spec) sets up a startsWith query for Filter API consumption. Returns a FilterQuery object. 
-_endsWith(prop, spec) sets up an endsWith query for Filter API consumption. Returns a FilterQuery object. 
-_filter(filterQuery) skips the chaining and takes a FilterQuery object directly. Calls the FilerQuery’s _go method, returns the resulting promise
+
+- `_equals(prop, spec)` sets up an equals query for Filter API consumption. Returns a FilterQuery object. 
+- `_contains(prop, spec)` sets up a contains query for Filter API consumption. Returns a FilterQuery object. 
+- `_startsWith(prop, spec)` sets up a startsWith query for Filter API consumption. Returns a FilterQuery object. 
+- `_endsWith(prop, spec)` sets up an endsWith query for Filter API consumption. Returns a FilterQuery object. 
+- `_filter(filterQuery)` skips the chaining and takes a FilterQuery object directly. Calls the FilerQuery’s _go method, returns the resulting promise
 
 FilterQuery object properties: 
-_go reference to the _go function
-_queries array of query objects constructed for this filter
-_subset array of PKs in the current Container for records to restrict this filter to
-_doRefresh - bool indicating if a data refresh is requested
-_refresh() - forces this query to call the API whether or not there’s a cached return for it. Returns this FilterQuery object.
-_go() - Calls the Filter API with the built query. Returns a Promise.
-_equals, _contains, _startsWith, and _endWith methods as shortcut references to those of the same names on the Container, and return this FilterQuery object
 
-query object format: {
-prop - a string, dot-notated path to the property being filtered on
-spec - the value to test against
-subset - an array of PKs in the current Container for records to restrict this filter to
-}
+- `_go()` Performs the Filter API call, or gets cashed result if present. Returns an object TODO define this object, needs promise and reference to future PK array of results.
+- `_queries` array of query objects constructed for this filter
+- `_subset` array of PKs in the current Container for records to restrict this filter to
+- `_doRefresh` - bool indicating if a data refresh is requested, default false. If false, _go may use existing filter result if it exists
+- `_refresh(bool)` - forces this query to call the API whether or not there’s a cached return for it. Returns this FilterQuery object.
+- `_equals()`, `_contains()`, `_startsWith()`, and `_endWith()` methods as shortcut references to those of the same names on the Container, and return this FilterQuery object
 
+query object format:
 
-_subset(pks) - sets the subset property on the given 
-
+- `prop` a string, dot-notated path to the property being filtered on
+- `spec` the value to test against
 
 ### Central Class
+
 
