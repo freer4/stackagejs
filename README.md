@@ -37,7 +37,8 @@ The minimum endpoints for default interactions. Created for each model on the ba
 - [POST] /{ModelName}/Save - Takes json output from the Model object on the front-end and creates or (updates, if PK provided) it in the database. Returns an OperationStatus object carrying the final model object, including the generated PK if this was a create. 
 - [POST] /{ModelName}/Delete - Takes the PK of a record to delete, return OperationStatus object
 - [GET] /{Model}/{PK} - Returns the record from the corresponding PK
-- /{Model/
+- [GET] /{Model}/List/{PKs} - Returns records for the CSV PK list provided
+- [GET] /{Model}/All - Returns all available data for the given record
 
 ## Model definitions
 The model format created by the back end for any given front end to consume.
@@ -52,7 +53,6 @@ Prefix option for multi-system setups
 `Container` is also a simple object, here akin to a database model, accessed from the `Central` object like so: `Central[MyModel.name]`. It utilizes proxies to create empty `Records` as they are asked for or discovered. 
 
 `Record` is an instance of a given Model class, as they are defined from your ORM's stackage. Access a record like so: `Central[MyModel.name][PK]`. The first time a record is accessed directly, it will ask its corresponding API for the available data. There are utilities to pre-fetch at will, and re-fetch at will or with an expiration setting. 
-
 
 Access related records from another record and stackage will understand what you're looking for based on the Model definitions
 
