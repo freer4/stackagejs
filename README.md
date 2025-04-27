@@ -35,9 +35,10 @@ The minimum endpoints for default interactions. Created for each model on the ba
 
 - [POST] /{Model.pathname}/save - Takes json output from the Model object on the front-end and creates or (updates, if PK provided) it in the database. Returns a record, including the generated PK if this was a create.
 - [POST] /{Model.pathname}/save-many - Takes an array of json outputs from the Model objects on the front-end. Creates or Updates each as appropriate. Returns an array of records, including the generated PKs. 
-- [POST] /{Model.pathname}/delete - Takes the PK of a record to delete, returns bool
-- [GET] /{Model.pathname}/{id} - Returns the record from the corresponding PK
-- [GET] /{Model.pathname}/list/{ids} - Returns array of records for the CSV PK list provided
+- [POST] /{Model.pathname}/delete - Takes the id of a record to delete, returns bool
+- [POST] /{Model.pathname}/delete-many - Takes an array of ids of a record to delete, returns bool
+- [GET] /{Model.pathname}/{id} - Returns the record from the corresponding id
+- [GET] /{Model.pathname}/list/{ids} - Returns array of records for the CSV id list provided
 - [GET] /{Model.pathname}/all - Returns all available data for the given model
 - [GET] /{Model.pathname}/all-ids - Returns all available ids for the given model
 
