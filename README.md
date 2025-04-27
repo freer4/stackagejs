@@ -187,3 +187,19 @@ query object format:
 ### Database Class
 
 
+## Data Types
+
+These are types that can be assigned to properties to handle special data cases not reasonably handled by default JS types. They will translate data from the API to a useable JS format interally, and back again for when the data needs sent to the API. 
+
+They are a class with a constructor that takes a value suitable for their _value property as the first argument, and an optional config for the second. 
+
+Required properties: 
+
+- `_raw` is how the back-end record interacts with this data type. It has a setter that takes the raw data as provided by the API and stores it internally in a format that makes sense for JS use. Has a getter that returns the internal value in the format the API expects.
+- `_value` is how the front-end record interacts with this data type. It has a setter that takes input data and transforms it into the internal value format. The getter returns the value in a format that is sensible for use. It may be that no transformation is necessary here. 
+
+Optional properties: 
+
+- `_validate` if this data type (not this particular data property) has a universal validation method, it should be kept here. Attempts to validate a record that contain a property with this data type will run this validator. Returns an array of errors.
+- Any other properties you want
+
