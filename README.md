@@ -34,12 +34,13 @@ Allow you to access your data models and properties directly in your Single-Page
 The minimum endpoints for default interactions. Created for each model on the back end, consumed by the front end. 
 
 
-- [POST] /{ModelName}/Save - Takes json output from the Model object on the front-end and creates or (updates, if PK provided) it in the database. Returns a record, including the generated PK if this was a create.
-- [POST] /{ModelName}/SaveMany - Takes an array of json outputs from the Model objects on the front-end. Creates or Updates each as appropriate. Returns an array of records, including the generated PKs. 
-- [POST] /{ModelName}/Delete - Takes the PK of a record to delete, returns bool
-- [GET] /{Model}/{PK} - Returns the record from the corresponding PK
-- [GET] /{Model}/List/{PKs} - Returns array of records for the CSV PK list provided
-- [GET] /{Model}/All - Returns all available data for the given model
+- [POST] /{ModelName}/save - Takes json output from the Model object on the front-end and creates or (updates, if PK provided) it in the database. Returns a record, including the generated PK if this was a create.
+- [POST] /{ModelName}/save-many - Takes an array of json outputs from the Model objects on the front-end. Creates or Updates each as appropriate. Returns an array of records, including the generated PKs. 
+- [POST] /{ModelName}/delete - Takes the PK of a record to delete, returns bool
+- [GET] /{Model}/{id} - Returns the record from the corresponding PK
+- [GET] /{Model}/list/{ids} - Returns array of records for the CSV PK list provided
+- [GET] /{Model}/all - Returns all available data for the given model
+- [GET] /{Model}/all-ids - Returns all available ids for the given model
 
 ## Model definitions
 The model format created by the back end for any given front end to consume.
