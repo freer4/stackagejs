@@ -142,6 +142,7 @@ Newly created Records are extended with non-enumerable methods and properties.
 
 #### Table properties: 
 - `_array` read-only reference to const array of known records for this Table.
+- `_keys` read-only reference to const array of keys of known records for this Table.
 
 
 
