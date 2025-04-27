@@ -96,7 +96,8 @@ For each property:
 - `type`: an appropriate Javascript type for the property in question. Each back-end stackage will decide these default mappings. This type will determine how values are interpreted by the front-end and repackaged for the back-end as necessary. An example would be a Date type - transmitted as an ISO 8601 date value, the front-end will automatically translate this to a JS Date object for immediate use. When _out is called on this record (such as when saving) stackage will translate that value back to an ISO 8601 string value for transmission. 
 Custom types can also be provided, for special data types not handled well by JS types. See Custom Data Types //TODO link
 - `config`: specific configuration values that will be passed into many internal functions
-- - `nullable` (bool): whether this value is nullable. Attempting to save a non-nullable property (other than id or createdAt) without a value will generate an error
+  - - `nullable` (bool): whether this value is nullable. Attempting to save a non-nullable property (other than id or createdAt) without a value will generate an error.
+  - - `foreignKey`: the name of the corresponding foreign key property, if this property is a relationship to another model. 
 }
 
 ## Front-End definition
