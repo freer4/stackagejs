@@ -1,4 +1,4 @@
-Pick your favorite frameworks and stack packages to abstract your ORM all the way to your SPA. Use this one convention to mix and match front-ends and back-ends however you need.  
+You know how you utilize an ORM to keep your back-end in sync with your database, and easily access or manipulate that data? We're just taking that one step further. Any ORM, any SPA, mix and match if you need to, and Stackage will handle the mundane part for you. 
 
 ## What does this even do? 
 Allow you to access your data models and properties directly in your Single-Page Application, including relationships and complex custom types; then automatically get that data as-needed with no further effort.
@@ -48,9 +48,9 @@ Prefix option for multi-system setups
 
 ## Front-End definition
 
-`Database` is a simple object acting as a faux-database to keep fetched data cached. Utilizing proxies, attempting to access a `Table` for the first time will create that Table on the `Database` object. 
+`Database` is a simple object to keep fetched data cached. Utilizing proxies, attempting to access a `Table` for the first time will create that Table on the `Database` object. 
 
-`Table` is also a simple object, here akin to a database model, accessed from the `Database` object like so: `Database[MyModel.name]`. It utilizes proxies to create empty `Records` as they are asked for or discovered. 
+`Table` is also a simple object, accessed from the `Database` object like so: `Database[MyModel.name]`. It utilizes proxies to create empty `Records` as they are asked for or discovered. 
 
 `Record` is an instance of a given Model class, as they are defined from your ORM's stackage. Access a record like so: `Database[MyModel.name][PK]`. The first time a record is accessed directly, it will ask its corresponding API for the available data. There are utilities to pre-fetch at will, and re-fetch at will or with an expiration setting. 
 
