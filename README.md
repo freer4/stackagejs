@@ -54,6 +54,10 @@ Import for the Model class.
 
 Imports for any related models. 
 
+Imports for any enums.
+
+Imports for any custom types. 
+
 Start Class declaration extending Model.
 
 A constructor that takes a record and a config object, calling the super(record, config) internally. 
@@ -83,6 +87,17 @@ window[Symbol.for(MyModel.name)] = MyModel;
 Finally, export the model: 
 `export default MyModel`
 
+### Properties Descriptor Object
+This is the object telling us all about the properties from the ORM. 
+
+For each property: 
+
+`propertyName` (camel case) : {
+- `type`: an appropriate Javascript type for the property in question. Each back-end stackage will decide these default mappings. This type will determine how values are interpreted by the front-end and repackaged for the back-end as necessary. An example would be a Date type - transmitted as an ISO 8601 date value, the front-end will automatically translate this to a JS Date object for immediate use. When _out is called on this record (such as when saving) stackage will translate that value back to an ISO 8601 string value for transmission. 
+Custom types can also be provided, for special data types not handled well by JS types. See Custom Data Types //TODO link
+- `config`: specific configuration values that will be passed into many internal functions
+- - `nullable` (bool): whether this value is nullable. Attempting to save a non-nullable property (other than id or createdAt) without a value will generate an error
+}
 
 ## Front-End definition
 
