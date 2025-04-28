@@ -10,7 +10,7 @@ Allow you to access your data models and properties directly in your Single-Page
 ### Each front-end package will:
 1. Understand the provided JS model classes to automatically interact with the API(s) as-needed. Records are accessed through proxy, so there's never a reason to write your own fetch call.  
 2. Manage front-end data caching. Don't ask for data you've already gotten, unless you want to.
-3. Manage offline data storage via localStorage. Easily cache data for offline use, or keep user input ready for when your application is back online. 
+3. Manage offline data storage via IndexedDB. Easily cache data for offline use, or keep user input ready for when your application is back online. 
 4. Provide update hooks for value changes, allowing integration with reactive frameworks or any custom reactivity.
 5. Provide optional hooks for receiving live data pushes.
 
