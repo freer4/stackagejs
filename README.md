@@ -10,7 +10,8 @@ Allow you to access your data models and properties directly in your Single-Page
 ### Each front-end package will:
 1. Understand the provided JS model classes to automatically interact with the API(s) as-needed. Records are accessed through proxy, so there's never a reason to write your own fetch call.  
 2. Manage front-end data caching. Don't ask for data you've already gotten, unless you want to.
-3. Provide optional hooks for receiving live data pushes.
+3. Provide update hooks for value changes, allowing integration with reactive frameworks or any custom reactivity
+4. Provide optional hooks for receiving live data pushes.
 
 ### Planned front-ends: 
 - stackage-js - vanilla JS holding the majority of front-end functionality for specific SPAs to wrap
@@ -135,7 +136,7 @@ Newly created Records are extended with non-enumerable methods and properties.
 - `_addError(errorObject)` adds an error to the _errors property
 - `_removeError(errorObject)` removes an error from the _errors property
 - `_clearErrors()` removes all errors from the _errors property
-- `_callback(record, prop)` null by default, setable callback function that will be called any time a value is modified on the record. Passes the record and modified prop.
+- `_callback(record, prop)` null by default, setable callback function that will be called any time a value is modified on the record. Passes the record and modified prop. //TODO should be event by default...
 - `_out()` processes all values and returns a JSON object ready for transport to the API. This is used internally by the `_save()` method and generally shouldn't be called manually.
 - `_typeof(prop)` shortcut to return the prop type defined on the Model
 - `_copy()` returns a new instance of the current Model with the copied values //TODO double check this isn't passing anything by reference...
