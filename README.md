@@ -222,10 +222,11 @@ They are a class with a constructor that takes a value suitable for their _value
 Required properties: 
 
 - `_raw` is how the back-end record interacts with this data type. It has a setter that takes the raw data as provided by the API and stores it internally in a format that makes sense for JS use. Has a getter that returns the internal value in the format the API expects.
-- `_value` is how the front-end record interacts with this data type. It has a setter that takes input data and transforms it into the internal value format. The getter returns the value in a format that is sensible for use. It may be that no transformation is necessary here. 
+- `_value` is how the front-end record interacts with this data type. It has a setter that takes input data and transforms it into the internal value format. The getter returns the value in a format that is sensible for use. It may be that no transformation is necessary here.
+- `baseType` set to `DataType` from stackage-js, this is used to identify that this is intended to be used by stackage as a custom data type following the convention set here. //TODO might be good enough to assume, and just leave this off
 
 Optional properties: 
 
-- `_validate` if this data type (not this particular data property) has a universal validation method, it should be kept here. Attempts to validate a record that contains a property with this data type will run this validator. Returns an array of errors.
+- `_validate` if this data type has a universal validation method, it should be kept here. Attempts to validate a record that contains a property with this data type will run this validator. Return an array of errors.
 - Any other properties you want
 
