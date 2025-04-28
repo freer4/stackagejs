@@ -179,7 +179,7 @@ Fetching when the record is first accessed covers most scenarios, and setting on
 - `_all()` Calls the `all` API for this table, fetching all available record data. Overusing this defeats the purpose of lazy-loading, but can be very useful in situations where you have small tables that benefit from pre-loading. Returns a promise.
 - `_equals`, `_contains`, `_startsWith`, `_endsWith`, `_order`, and `_filter` methods as described in the Filtration Set section
 
-#### Filtration set (Optional) 
+### Filtration set (Optional) 
 
 Server-side data filtering that returns an array of PKs for the given queries on this Table. Devs should be conscious of whether their data set is better filtered on the back-end (no need to send all records to client to filter) or the front-end (more data initially, but fewer network calls and less stress on the back-end). 
 
@@ -225,6 +225,6 @@ Required properties:
 
 Optional properties: 
 
-- `_validate` if this data type (not this particular data property) has a universal validation method, it should be kept here. Attempts to validate a record that contain a property with this data type will run this validator. Returns an array of errors.
+- `_validate` if this data type (not this particular data property) has a universal validation method, it should be kept here. Attempts to validate a record that contains a property with this data type will run this validator. Returns an array of errors.
 - Any other properties you want
 
