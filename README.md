@@ -162,17 +162,21 @@ Fetching when the record is first accessed covers most scenarios, and setting on
 #### Table properties: 
 - `_array` read-only reference to const array of known records for this Table.
 - `_keys` read-only reference to const array of keys of known records for this Table.
-
-
-
+- `_promises` read-only reference to const array of active prommises for this Table.
+- `_length` read-only length of *known* records for this Table.
 
 #### Table Local methods:
-- `_remove([Record] || Record || [PK] || PK)` removes the passed Record(s) from this Table by reference or PK, and does not call API
-
-
+- `_remove([Record] || Record || [PK] || PK)` removes the passed Record(s) from this Table by reference or PK, and does not call API. Returns nothing
+- `_add(record)` Adds the passed record to this Table. Does not call API. Returns the reference to the record
 
 #### Table API methods:
-
+- `_discover()` Calls the 'all-ids' API for this Table. Returns a promise.
+- `_save(Record || id)` Calls the 'save' API for the passed record. Returns a promise.
+- `_saveAll()` Calls the 'save-many' API for all modified records on this Table (including those added). Returns a promise.
+- `_refresh(Record || id)` Calls the `get` API for the passed record. Returns a promise.
+- `_refreshAll()` Calls the `list` API for all known record ids. Returns a promise.
+- `_all()` Calls the `all` API for this table, fetching all available record data. Overusing this defeats the purpose of lazy-loading, but can be very useful in situations where you have small tables that benefit from pre-loading. Returns a promise.
+- `_equals`, `_contains`, `_startsWith`, `_endsWith`, `_order`, and `_filter` methods as described in the Filtration Set section
 
 #### Filtration set (Optional) 
 
