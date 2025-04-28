@@ -68,9 +68,15 @@ A constructor that takes a record and a config object, calling the super(record,
 
 The following static properties: 
 
-- `prefix` Prefix option for multi-system setups. Ommitted by default.
-- `name` The name of the model, which includes the prefix if any provided
+- `prefix` Prefix option for multi-system setups, where this value is what will be used to determine which API connection to use for this particular model. Omitted by default, which will use the "default" registered API connection.*
+- `name` The name of the model, which includes the prefix if any provided. recommend PascalCase, but not enforced.**
+- `pathName` is the controller sub-string in the URL, that is the "my-controller" section of "https://mysite.com/my-controller/get". Should be kebab-case, but casing is not enforced. Deviate at your own peril.**
 - `dto` Bool indicating if this is a DTO (see DTO section)
+
+> *prefix is used as a system identifier, rather than having each model definition carry its own URLs around. This allows for flexible configurations, like environment-specific API connections. See Connection object TODO link this
+
+> **casing is not enforced and generally JS doesn't care, it's just using strings; you could make these almost anything you want. However, the recommended and default pattern is that `(Prefix)ModelName` be used for the model name, and `model-name` for the pathName.  
+
 
 The following static read-only function:
 
