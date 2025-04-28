@@ -137,6 +137,15 @@ Newly created Records are extended with non-enumerable methods and properties.
 - `_save()` calls Update API if PK is present. Calls Create API if PK is not present. Successful Create updates Record with returned PK. Returns a promise.
 - `_delete()` calls Delete API. Upon Successful Delete, _remove is called on the Record. Returns a promise. 
 
+#### Design notes: 
+
+There were two ways considered to go about auto-fetching the record values - when the record is first accessed, or when a particular value on the record is acceessed. 
+
+The latter would allow for peeking at helper properties like _loaded without bothering to call the API for values. However, in previous itterations of this pattern 
+that use case has rarely come up in practical application. If there was a reason to look and see if the record was loaded, it was likely because we were calling 
+on the API already. 
+
+Fetching when the record is first accessed covers most scenarios, and setting one self-unwrapping getting at the record level is less lift than setting them on every property. 
 
 ### Table Class
 
