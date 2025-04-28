@@ -75,20 +75,19 @@ The following static properties:
 
 > *prefix is used as a system identifier, rather than having each model definition carry its own URLs around. This allows for flexible configurations, like environment-specific API connections. See Connection object TODO link this
 
-> **casing is not enforced and generally JS doesn't care, it's just using strings; you could make these almost anything you want. However, the recommended and default pattern is that `(Prefix)ModelName` be used for the model name, and `model-name` for the pathName.  
-
+> **casing is not enforced and generally JS doesn't care, it's just using strings; you could make these almost anything you want. However, the recommended and default pattern is that `(Prefix)ModelName` be used for the model name, and `model-name` for the pathName. The prefix on model name is to help prevent clashing models in multi-system setups: AppAUserModel vs AppBUserModel, where AppA and AppB are prefixes that keep the UserModels from fighting amongst themselves for dominance. The API would not need to be aware of this setup whatsoever, and so prefix is not used in the pathName.
 
 The following static read-only function:
 
-- `properties` function that replaces itself with the properties descriptor object. Using a function here is necessary to avoid issues with circular referencing. Returns the properties descriptor object.
+- `properties` function that replaces itself with the properties descriptor object. Using a function here is necessary to avoid issues with circular referencing. Returns the properties descriptor object. TODO link
 
 The following static property. Can be omitted or empty if there are not any foreign keys: 
 
-- `foreignKeys` KvPs in the format `fkPropertyName`: `PropertyName` //TODO determine if this is still necessary
+- `foreignKeys` KvPs in the format `fkPropertyName`: `PropertyName` //TODO determine if this is still necessary, I think it's covered by property settings 
 
 End Class declaration.
 
-Set a reference to the class on the window object //TODO Recall why we needed to do this...
+Set a reference to the class on the window object by symbol, something to do with ensuring we have a single object reference for comparison. Honestly it was a long time ago and now it's fuzzy, but there's an issue this solves.
 
 ```
 window[Symbol.for(MyModel.name)] = MyModel;
@@ -106,8 +105,11 @@ For each property:
 - `type`: an appropriate Javascript type for the property in question. Each back-end stackage will decide these default mappings. This type will determine how values are interpreted by the front-end and repackaged for the back-end as necessary. An example would be a Date type - transmitted as an ISO 8601 date value, the front-end will automatically translate this to a JS Date object for immediate use. When _out is called on this record (such as when saving) stackage will translate that value back to an ISO 8601 string value for transmission. 
 Custom types can also be provided, for special data types not handled well by JS types. See Custom Data Types //TODO link
 - `config`: specific configuration values that will be passed into many internal functions
-  - - `nullable` (bool): whether this value is nullable. Attempting to save a non-nullable property (other than id or createdAt) without a value will generate an error.
-  - - `foreignKey`: the name of the corresponding foreign key property, if this property is a relationship to another model. 
+    - `nullable` (bool): whether this value is nullable. Attempting to save a non-nullable property (other than id or createdAt) without a value will generate an error.
+    - `foreignKey`: the name of the corresponding foreign key property, if this property is a relationship to another model.
+    - `min`, `max`, `minLength`, `maxLength`, etc. Any sort of property where it will be useful to know with a particular data type.    
+      Most notably, use it for abstracting your validation callbacks, which receive both the value and configuration for a property. TODO link to validation. For example, setting min and max length to 5 when you want a five digit zip code, and then running a generic length validator against the value.        
+      TODO as more specific helpers are built in these will become more rigorously defined
 
 ## Front-End definition
 
