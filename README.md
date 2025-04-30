@@ -15,7 +15,7 @@ Allow you to access your data models and properties directly in your Single-Page
 5. Provide optional hooks for receiving live data pushes.
 
 ### Planned front-ends: 
-- stackage-js - vanilla JS holding the majority of front-end functionality for specific SPAs to wrap
+- [stackage-js](https://github.com/freer4/stackage-js/) - vanilla JS holding the majority of front-end functionality for specific SPAs to wrap
 - stackage-ts - same thing but with TS. Might not do this. Convince me.
 - stackage-handlebars - might just be the vanilla version?
 - stackage-vue
