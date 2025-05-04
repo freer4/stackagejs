@@ -24,7 +24,7 @@ Allow you to access your data models and properties directly in your Single-Page
 - stackage-svelte
 
 ### Planned back-ends: 
-- stackage-sequelize - Sequelize
+- [stackage-sequelize](https://github.com/freer4/stackage-sequelize/) - Sequelize
 - stackage-ef - Entity Framework
 - stackage-django
 - Any other ORMs I come across, preferably in a variety of languages as a flex
