@@ -26,7 +26,7 @@ Allow you to access your data models and properties directly in your Single-Page
 ### Planned back-ends: 
 - [stackage-sequelize](https://github.com/freer4/stackage-sequelize/) - Sequelize
 - [stackage-dotnet](https://github.com/freer4/stackage-dotnet/) - DotNet model and controller API package
-- stackage-ef - Entity Framework
+- [stackage-ef](https://github.com/freer4/stackage-entity-framework/) - Entity Framework
 - stackage-django
 - Any other ORMs I come across, preferably in a variety of languages as a flex
 
