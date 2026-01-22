@@ -1,4 +1,13 @@
-You know how you utilize an ORM to keep your back-end in sync with your database, and easily access or manipulate that data? We're just taking that one step further. Any ORM, any SPA, mix and match if you need to, and Stackage will handle the mundane part for you. 
+Convention-based API interaction for you SPA. 
+
+Build your models in your favorite API language and extend with the appropriate Stackage.
+
+Install the corresponding Stackage for your front-end application.
+
+Now they can talk to one another. 
+
+Any API to any front-end; any ORM and any SPA. Let your user expreience talk to data without having to wire every interaction manually. 
+
 
 ## What does this even do? 
 Allow you to access your data models and properties directly in your Single-Page Application, including relationships and complex custom types; then automatically get that data as-needed with no further effort.
