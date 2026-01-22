@@ -10,7 +10,7 @@ Any API to any front-end; any ORM and any SPA. Let your user expreience talk to 
 
 
 ## What does this even do? 
-Allow you to access your data models and properties directly in your Single-Page Application, including relationships and complex custom types; then automatically get that data as-needed with no further effort.
+Stackage allows you to access your data models and properties directly in your Single-Page Application (SPA), including relationships and complex custom types; then automatically get that data as-needed with no further effort. Lazy loading, front-end caching, sorting, filtering, data validation, data navigation - stop writing more code to do the same things over and over.
 
 ### Each back-end package will: 
 1. provide standardized JS classes describing each model from your choosen ORM, such as field names, types, nullability, constraints, and relationships to other models.
@@ -30,7 +30,6 @@ Allow you to access your data models and properties directly in your Single-Page
 - stackage-vue
 - stackage-angular
 - stackage-react
-- stackage-svelte
 
 ### Planned back-ends: 
 - [stackage-sequelize](https://github.com/freer4/stackage-sequelize/) - Sequelize
